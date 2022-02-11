@@ -1,0 +1,23 @@
+//Question 1
+
+SELECT * FROM Student;
+
+//Question 2
+
+select * FROM Student
+ORDER by name,firstname DESC;
+
+//Question 3
+
+select name,firstname FROM Student
+WHERE city='Lyon';
+
+//Question 4
+
+select name,firstname,city FROM Student
+WHERE city LIKE '%ll%';
+
+//Question 5
+
+select firstname FROM Student
+WHERE name = 'Dupont' or name = 'Durand' or name = 'Martin';

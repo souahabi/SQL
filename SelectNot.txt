@@ -1,0 +1,72 @@
+//Question 1
+
+select COUNT(numtest) FROM Test;
+
+//Question 2
+
+SELECT Student.name, Student.firstname, Notation.score FROM Notation 
+INNER JOIN Student 
+ON Notation.numstud = Student.numstud;
+
+//Question 3
+
+SELECT Student.name, Student.firstname, Notation.score, Matter.wording FROM Notation 
+INNER JOIN Student 
+ON Notation.numstud = Student.numstud
+INNER JOIN Test 
+ON Notation.numtest = Test.numtest
+INNER JOIN Matter
+ON Test.codemat = Matter.codemat;
+
+//Question 4
+
+SELECT score FROM Notation
+WHERE score >= 10;
+
+//Question 5
+
+SELECT name,firstname FROM Student
+INNER JOIN Notation
+ON Notation.numstud = Student.numstud
+WHERE score = 20;
+
+//Question 6
+
+SELECT student.name,Student.firstname,AVG(Notation.score) FROM Student
+INNER JOIN Notation
+on Notation.numstud = Student.numstud
+GROUP BY Student.numstud;
+
+//Question 7
+
+SELECT numtest FROM Test
+WHERE testdate BETWEEN '2014/01/01' AND '2014/06/30';
+
+//Question 8
+
+SELECT Test.numtest, Test.testdate, Test.place, Matter.wording FROM Test
+INNER JOIN Matter 
+ON Test.codemat = Matter.codemat;
+
+//Question 9
+
+SELECT student.name,Student.firstname,AVG(Notation.score) FROM Student
+INNER JOIN Notation
+on Notation.numstud = Student.numstud
+GROUP BY Student.numstud
+ORDER BY AVG(Notation.score) DESC;
+
+//Question 10
+
+SELECT Matter.wording,AVG(Notation.score) FROM Notation
+INNER JOIN Test
+on Notation.numtest=Test.numtest
+INNER JOIN Matter
+on Matter.codemat=Test.codemat
+GROUP BY Test.codemat;
+
+//Question 11
+
+SELECT numtest,AVG(Notation.score) FROM Notation
+GROUP BY Notation.numtest
+HAVING COUNT(numstud) < 6;

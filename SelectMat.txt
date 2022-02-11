@@ -1,0 +1,7 @@
+//Question 1
+
+SELECT wording,(coef/9)*100 FROM Matter;
+
+//Question 2
+
+select SUM(coef) FROM Matter;

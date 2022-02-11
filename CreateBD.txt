@@ -1,0 +1,36 @@
+CREATE DATABASE CreateBD;
+
+USE CreateBD;
+
+CREATE TABLE Matter(
+	codemat CHAR PRIMARY KEY NOT NULL,
+	wording CHAR,
+	coef FLOAT
+   );
+
+CREATE TABLE Student(
+	numstud INTEGER PRIMARY KEY AUTOINCREMENT,
+	name CHAR,
+	firstname CHAR,
+	dateofbirth DATE,
+	street CHAR,
+	postalcod CHAR,
+	city CHAR
+   );
+
+CREATE TABLE Test(
+	numtest INTEGER PRIMARY KEY AUTOINCREMENT,
+	testdate DATE,
+	place CHAR,
+	codemat CHAR,
+	FOREIGN KEY (codemat) REFERENCES Matter(codemat)
+   );
+   
+CREATE TABLE Notation(
+	numstud INT NOT NULL,
+	numtest INT NOT NULL,
+	score FLOAT,
+	primary key (numstud, numtest),
+	FOREIGN KEY(numstud) REFERENCES Student(numstud),
+   FOREIGN KEY(numtest) REFERENCES Test(numtest)
+   );
